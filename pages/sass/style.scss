@@ -1,0 +1,72 @@
+@import "colors";
+@import "fonts";
+@import "animations";
+@import "hamburgerMenu";
+
+body {
+	margin: 0;
+	background-color: $background-color;
+}
+
+span, a, button, h1, h2, h3, h4, h5, h6, i, b, p, div, input{
+	font-family: PathwayExtreme;
+	user-select: none;
+	color: white;
+}
+
+button {
+		cursor: pointer;
+}
+
+button:hover{
+	animation-name: showDropShadow;
+  animation-duration: 0.25s;
+	animation-fill-mode: forwards;
+}
+
+button:not(:hover){
+	animation-name: hideDropShadow;
+  animation-duration: 0.25s;
+	animation-fill-mode: forwards;
+}
+
+button, input{
+	background-color: $input-color;
+	border-radius: 5px;
+	border: 2px solid $border-color;
+}
+
+input:focus{
+	outline: none;
+	animation-name: showDropShadow;
+  animation-duration: 0.25s;
+	animation-fill-mode: forwards;
+}
+
+input:not(:focus){
+	outline: none;
+	animation-name: hideDropShadow;
+  animation-duration: 0.25s;
+	animation-fill-mode: forwards;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px #5e5e5e inset;
+    -webkit-text-fill-color: white;
+}
+
+.player-profile-picture{
+	width: 100px;
+	height: 100px;
+	background-color: $background-color-light;
+	border-radius: 100%;
+}
+
+.site-topbar{
+	width: 100%;
+	height: 32px;
+	background-color: $background-color-light;
+	margin-bottom: 32px;
+	display: flex;
+	align-items: center;
+}

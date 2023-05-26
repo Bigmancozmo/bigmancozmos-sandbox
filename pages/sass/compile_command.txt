@@ -1,0 +1,1 @@
+cd ~/bigmancozmos-sandbox/pages ; sass --watch sass/style.scss:css/style.css --style compressed
