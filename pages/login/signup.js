@@ -41,3 +41,5 @@ function signup() {
 	}
 }
 signUpButton.onclick = signup
+
+console.log("test")
