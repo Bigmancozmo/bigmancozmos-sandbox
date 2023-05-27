@@ -65,8 +65,8 @@ app.get(process.env['db_url'] + 'makeAccount', (req, res) => {
 	}
 	res.sendFile(path.join(__dirname, '/index.html'));
 });
-app.get(process.env['db_url'] + 'getUser', async (req, res) => {
-	const id = req.query.id;
+app.post(process.env['db_url'] + 'getUser', async (req, res) => {
+	const id = req.body.id;
 	const json = await database.getUserData(id);
 	res.json(json);
 });
@@ -80,10 +80,12 @@ app.post(process.env['db_url'] + 'tryLogin', jsonParser, async (req, res) => {
 		return;
 	}
 	res.send({
-		"doLogIn": (((await database.signInWithUsername(req.body.name,req.body.pass))["user"]) != null),
+		"doLogIn": (((await database.signInWithUsername(req.body.name, req.body.pass))["user"]) != null),
 	})
 });
-
+app.get("/apidocs", (req, res) => {
+	res.sendFile(path.join(__dirname, '/pages/docs/api/apiDocs.html'))
+});
 
 // JS/CSS //
 async function loadScriptsInFolder(folder) {

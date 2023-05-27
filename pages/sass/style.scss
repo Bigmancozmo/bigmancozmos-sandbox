@@ -70,3 +70,11 @@ input:-webkit-autofill {
 	display: flex;
 	align-items: center;
 }
+
+.code-font{
+	font-family: SourceCodePro;
+	background-color: black;
+	padding: 5px;
+	border-radius: 5px;
+	user-select: text;
+}
