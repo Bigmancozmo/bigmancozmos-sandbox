@@ -9,7 +9,29 @@
 <body>
 	<div class="wrapper">
 		<h2>bigmancozmo's sandbox api docs</h2>
-		<span>Base URL: <span class="code-font">https://bigmancozmos-sandbox.mctheanimator.repl.co/api/</span></span>
+		<h5>Base URL: <span class="code-font">https://bigmancozmos-sandbox.mctheanimator.repl.co/api/</span></h6>
+		<h3>User Info</h3>
+		<h5>
+			<span class="code-font blue-text">POST /api/getUser</span>  
+			   Get user information (name, description, friends, etc...) <br>
+			Required JSON: <br>
+			<span class="code-font">
+				{
+					"id": [USER_ID]
+				}
+			</span>
+		</h5>
+		<h5>
+			<span class="code-font blue-text">POST /api/tryLogin</span>  
+			   Checks if you can login with the provided information. <br>
+			Required JSON: <br>
+			<span class="code-font">
+				{
+					"name": [USERNAME],
+					"pass": [PASSWORD]
+				}
+			</span>
+		</h5>
 	</div>
 </body>
 </html>

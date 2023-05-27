@@ -74,7 +74,11 @@ input:-webkit-autofill {
 .code-font{
 	font-family: SourceCodePro;
 	background-color: black;
-	padding: 5px;
+	padding: 3px;
 	border-radius: 5px;
 	user-select: text;
+}
+
+.blue-text{
+	color: #00c2ff;
 }
