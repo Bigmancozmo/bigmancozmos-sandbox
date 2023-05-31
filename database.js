@@ -6,36 +6,46 @@ async function getUserData(userId) {
 		.from('users')
 		.select('*')
 	if (error != null) { console.warn(error); return false; }
-	else { return users[userId - 1]; }
+	let data = null
+	for (let i = 0; i < users.length; i++) {
+		if (users[i]["id"] == userId) {
+			return users[i];
+		}
+	}
 }
 
 async function getUserDataFromName(username) {
 	let { data: users, error } = await supabase
 		.from('users')
 		.select('*')
-	let id = 0
 	for (let i = 0; i < users.length; i++) {
 		if (users[i]["user_data"]["username"] == username) {
-			id = i;
-			break;
+			return await getUserData(users[i]["id"])
 		}
 	}
-	let userData = await getUserData(id + 1);
-	return userData;
+}
+
+async function getUserIDFromName(username) {
+	let { data: users, error } = await supabase
+		.from('users')
+		.select('*')
+	for (let i = 0; i < users.length; i++) {
+		if (users[i]["user_data"]["username"] == username) {
+			return users[i]["id"];
+		}
+	}
 }
 
 async function doesAccountExistWithName(name) {
 	let { data: users, error } = await supabase
 		.from('users')
 		.select('*')
-	let exists = false
 	for (let i = 0; i < users.length; i++) {
 		if (users[i]["user_data"]["username"] == name) {
-			exists = true;
-			break;
+			return true;
 		}
 	}
-	return exists;
+	return false;
 }
 
 async function makeAccountData(username, email) {
@@ -103,9 +113,9 @@ async function getImage(bucket, directory) {
 	return data;
 }
 
-async function resetPassword(email, redirect){
+async function resetPassword(email, redirect) {
 	await supabase.auth.resetPasswordForEmail('hello@example.com', {
-  	redirectTo: 'http://example.com/account/update-password',
+		redirectTo: 'http://example.com/account/update-password',
 	})
 }
 
@@ -118,3 +128,4 @@ exports.getSession = getSession
 exports.doesAccountExistWithName = doesAccountExistWithName
 exports.getImage = getImage
 exports.resetPassword = resetPassword
+exports.getUserIDFromName = getUserIDFromName

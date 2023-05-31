@@ -45,10 +45,9 @@ app.get('/getImage', async (req, res) => {
 })
 
 // Database Pages //
-app.get(process.env['db_url'] + 'getAccount', (req, res) => {
-	res.json({
-		id: Math.floor(req.query.id),
-	});
+app.get(process.env['db_url'] + 'getIDFromName', async (req, res) => {
+	const id = await database.getUserIDFromName(req.query.username)
+	res.json({ id });
 });
 app.get('/verifyAccount', (req, res) => {
 	database.getSession();
@@ -65,7 +64,7 @@ app.get(process.env['db_url'] + 'makeAccount', (req, res) => {
 	}
 	res.sendFile(path.join(__dirname, '/index.html'));
 });
-app.post(process.env['db_url'] + 'getUser', async (req, res) => {
+app.post(process.env['db_url'] + 'getUser', jsonParser, async (req, res) => {
 	const id = req.body.id;
 	const json = await database.getUserData(id);
 	res.json(json);

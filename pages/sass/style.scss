@@ -82,3 +82,18 @@ input:-webkit-autofill {
 .blue-text{
 	color: #00c2ff;
 }
+
+.username-home-txt{
+	font-size: 28px;
+}
+
+.description-home-txt{
+	font-size: 10px;
+	display: block;
+	top: 50px;
+	color: $slight-dark-text-color;
+}
+
+.default-footer{
+	background-color: $background-color-dark;
+}

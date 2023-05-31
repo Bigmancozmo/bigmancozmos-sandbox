@@ -48,3 +48,30 @@ hamburgerLineContainer.onclick = function() {
 	}
 	open = !open
 }
+
+// Get User Info //
+async function postRequest(url, json) {
+	const rawResponse = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(json)
+	});
+	return await rawResponse.json();
+}
+
+async function getRequest(url) {
+	const response = await fetch(url);
+	const json = response.json();
+	return json;
+}
+
+(async () => {
+	const apiURL = "https://bigmancozmos-sandbox.mctheanimator.repl.co/api";
+	let id = await getRequest(apiURL + "/getIDFromName?username=" + username)
+	let info = await postRequest(apiURL + "/getUser", id)
+
+	document.getElementById("description").innerText = info["user_data"]["description"]
+})();
