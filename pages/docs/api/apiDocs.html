@@ -13,24 +13,74 @@
 		<h3>User Info</h3>
 		<h5>
 			<span class="code-font blue-text">POST /api/getUser</span>  
-			   Get user information (name, description, friends, etc...) <br>
+			   Get user information (name, description, email, etc...) <br>
 			Required JSON: <br>
-			<span class="code-font">
-				{
-					"id": [USER_ID]
-				}
-			</span>
+			<div class="json-info code-font">
+				<div class="json-section">
+					<div class="json-info-piece">
+						<span class="blue-text">Name</span>
+					</div>
+					<div class="json-info-piece">
+						<span>id</span>
+					</div>
+				</div>
+				<div class="json-section">
+					<div class="json-info-piece">
+						<span class="blue-text">Type</span>
+					</div>
+					<div class="json-info-piece">
+						<span>int</span>
+					</div>
+				</div>
+				<div class="json-section">
+					<div class="json-info-piece">
+						<span class="blue-text">Description</span>
+					</div>
+					<div class="json-info-piece">
+						<span>The ID of the user to whose info to get.</span>
+					</div>
+				</div>
+			</div>
 		</h5>
 		<h5>
 			<span class="code-font blue-text">POST /api/tryLogin</span>  
 			   Checks if you can login with the provided information. <br>
 			Required JSON: <br>
-			<span class="code-font">
-				{
-					"name": [USERNAME],
-					"pass": [PASSWORD]
-				}
-			</span>
+			<div class="json-info code-font">
+				<div class="json-section">
+					<div class="json-info-piece">
+						<span class="blue-text">Name</span>
+					</div>
+					<div class="json-info-piece">
+						<span>name</span>
+					</div>
+					<div class="json-info-piece">
+						<span>pass</span>
+					</div>
+				</div>
+				<div class="json-section">
+					<div class="json-info-piece">
+						<span class="blue-text">Type</span>
+					</div>
+					<div class="json-info-piece">
+						<span>string</span>
+					</div>
+					<div class="json-info-piece">
+						<span>string</span>
+					</div>
+				</div>
+				<div class="json-section">
+					<div class="json-info-piece">
+						<span class="blue-text">Description</span>
+					</div>
+					<div class="json-info-piece">
+						<span>The user's name.</span>
+					</div>
+					<div class="json-info-piece">
+						<span>The user's password</span>
+					</div>
+				</div>
+			</div>
 		</h5>
 	</div>
 </body>
