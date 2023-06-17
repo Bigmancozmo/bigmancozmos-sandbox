@@ -22,6 +22,7 @@ logout_btn.onclick = function() {
 // Hamburger Menu //
 const hamburgerLineContainer = document.getElementById("hamburger-lines")
 const hamburgerLines = hamburgerLineContainer.getElementsByTagName("div");
+const topbar = document.getElementById("topbar");
 let open = false
 hamburgerLineContainer.onclick = function() {
 	if (open) {
