@@ -19,8 +19,9 @@ async function getUserDataFromName(username) {
 		.from('users')
 		.select('*')
 	for (let i = 0; i < users.length; i++) {
+		console.log(users[i]["user_data"]["username"])
 		if (users[i]["user_data"]["username"] == username) {
-			return await getUserData(users[i]["id"])
+			return users[i]
 		}
 	}
 }
@@ -52,7 +53,7 @@ async function makeAccountData(username, email) {
 	const { data, error } = await supabase
 		.from('users')
 		.insert([
-			{ user_data: `{"username": "${username}","description": ""}`, email: email },
+			{ user_data: JSON.parse(`{"username": "${username}","description": ""}`), email: email },
 		])
 	console.log(data)
 	console.log(error)
@@ -94,10 +95,15 @@ async function signIn(email, pass) {
 }
 
 async function signInWithUsername(username, pass) {
-	let data = await getUserDataFromName(username);
-	let email = data["email"];
-	let signInStatus = await signIn(email, pass);
-	return signInStatus
+	console.log(username)
+	console.log(await doesAccountExistWithName(username))
+	if(await doesAccountExistWithName(username)){
+		let data = await getUserDataFromName(username);
+		let email = data["email"];
+		let signInStatus = await signIn(email, pass);
+		return signInStatus
+	}
+	return false
 }
 
 function getSession() {

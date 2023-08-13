@@ -53,7 +53,9 @@ app.get('/verifyAccount', (req, res) => {
 	database.getSession();
 	res.sendFile(path.join(__dirname, '/verifyAccount.html'));
 });
-app.get(process.env['db_url'] + 'makeAccount', (req, res) => {
+app.post(process.env['db_url'] + 'makeAccount', jsonParser, (req, res) => {
+	console.log(req.body)
+	console.log(req.query)
 	const username = req.body.username;
 	const email = req.body.email;
 	const password = req.body.password;
@@ -90,7 +92,7 @@ app.get("/apidocs", (req, res) => {
 async function loadScriptsInFolder(folder) {
 	const files = fs.readdirSync(__dirname + folder);
 	files.forEach(file => {
-		if ((file.split(".")[1] == "css") || (file.split(".")[1] == "js") || (file.split(".")[1] == "ttf" || (file.split(".")[1] == "otf"))) {
+		if ((file.split(".")[1] == "css") || (file.split(".")[1] == "js") || (file.split(".")[1] == "ttf" || (file.split(".")[1] == "otf") || (file.split(".")[1] == "png") || (file.split(".")[1] == "jpg") || (file.split(".")[1] == "jpeg") || (file.split(".")[1] == "webp"))) {
 			console.log("Loading " + folder + "/" + file)
 			app.get(folder + "/" + file, (req, res) => {
 				res.sendFile(path.join(__dirname, folder + "/" + file));
